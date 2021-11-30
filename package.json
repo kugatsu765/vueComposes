@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build:lib": "vue-tsc --noEmit && vite build",
+    "build:lib": "npx unbuild",
     "publish:lib": "npm publish --access public",
     "publish:dry": "npm publish --dry-run",
     "serve": "vite preview",
