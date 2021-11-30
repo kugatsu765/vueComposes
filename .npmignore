@@ -1,0 +1,32 @@
+.DS_Store
+.vscode
+node_modules
+public
+src
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# other
+pnpm-lock.yaml
+build.config.ts
+index.html
+package-lock.json
+tsconfig.json
+vite.config.ts
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+tsconfig.json

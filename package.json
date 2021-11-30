@@ -1,0 +1,30 @@
+{
+  "name": "@kugatsu/vue-composes",
+  "description": "Some composition function to help & share",
+  "version": "1.0.5",
+  "author": "Romain GABEL",
+  "license": "ISC",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:lib": "vue-tsc --noEmit && vite build",
+    "publish:lib": "npm publish --access public",
+    "publish:dry": "npm publish --dry-run",
+    "serve": "vite preview"
+  },
+  "keywords": [
+    "vue3",
+    "vuejs",
+    "compositionApi"
+  ],
+  "dependencies": {
+    "unbuild": "^0.5.13",
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.4",
+    "vue-tsc": "^0.3.0"
+  }
+}
