@@ -506,10 +506,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@kugatsu/utilities@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@kugatsu/utilities/-/utilities-1.0.0.tgz#bda7f35d8e4b3ce0c3df18aa3e1dee54dc0af3c0"
-  integrity sha512-4U5IR3ccDFzYfzUtyKkKyZv3oWsMR1TMQpdL1rV8RoDnaZRuzX1uZuU9P7YVngut6veGdNc9amg5GDcnvPz8DA==
+"@kugatsu/utilities@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@kugatsu/utilities/-/utilities-1.0.2.tgz#a34fda0ac317df8e92efc41dfb699facf65ea08a"
+  integrity sha512-nBzo5714D83GdKI0KpwENDMYrVm2HpvnJsIk9DKf9ykWtpDzdixbL8doNHvf7MGbdrgoEjMcgemAEa5aIdOsMg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
