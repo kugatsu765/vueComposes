@@ -30,3 +30,35 @@ function reloadUsers() {
   execUsers({ active: true });
 }
 ```
+
+## useSearch
+
+Composition function to filter datas[] with keywords or keyword
+
+### Install
+
+```shell
+yarn add @kugatsu/vueComposes
+```
+
+### How to use
+
+```vue
+<script setup lang="ts">
+import { useSearch } from "@kugatsu/vueComposes";
+
+const datas = ref([
+  { name: "Romain", age: 32, sport: ["badminton"] },
+  { name: "Aline", age: 30, sport: ["tennis", "badminton"] },
+]);
+
+const { datasFiltred, search } = useSearch(datas);
+</script>
+
+<template>
+  <input v-model="search" ... />
+  <div>
+    {{ datasFiltred }}
+  </div>
+</template>
+```
