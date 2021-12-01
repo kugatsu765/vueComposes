@@ -1,7 +1,7 @@
 {
   "name": "@kugatsu/vue-composes",
   "description": "Some composition function to help & share",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Romain GABEL",
   "license": "ISC",
   "main": "./dist/index.cjs",
