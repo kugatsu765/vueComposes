@@ -24,9 +24,7 @@ export function useApi<PayloadType, ResultType>(func: (payload: PayloadType) => 
 
     const exec = async (payload: PayloadType) => {
         loading.value = true
-        completedOnce.value = false
         error.value = ""
-
 
         return await func(payload)
             .then((res: any) => {
