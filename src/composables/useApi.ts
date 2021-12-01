@@ -1,42 +1,42 @@
 import { ref, Ref } from "vue";
 
-export interface IAPIParam<T, P> {
-    defaultParams?: P;
-    defaultValue: T;
+export interface IAPIParam<ResultType, PayloadType> {
+    defaultParams?: PayloadType;
+    defaultValue: ResultType;
     immediate?: boolean;
     loader?: boolean;
     transform?: (data: any) => any;
     [x: string]: any;
 }
 
-export function useApi<T, P>(
-    func: (payload: P) => Promise<any | void>,
-    options: IAPIParam<T, P>
-) {
+export function useApi<PayloadType, ResultType>(func: (payload: PayloadType) => Promise<any | void>, options: IAPIParam<ResultType, PayloadType>) {
+
     const error = ref<string>('')
     const loading = ref<boolean>(false)
-    const completed = ref<boolean>(false)
+    const completedOnce = ref<boolean>(false)
     const status = ref<number>()
-    const results = ref<T>(options.defaultValue) as Ref<T>
+    const results = ref<ResultType>(options.defaultValue) as Ref<ResultType>
 
     function endProcess() {
         loading.value = false
-        completed.value = true
+        completedOnce.value = true
     }
 
-    const exec = async (payload: any) => {
+    const exec = async (payload: PayloadType) => {
         loading.value = true
-        completed.value = false
+        completedOnce.value = false
         error.value = ""
+
 
         return await func(payload)
             .then((res: any) => {
-                status.value = res?.status
+                status.value = res?.status ?? "200"
+                const data = res?.data ?? res
 
                 if (options.transform)
-                    results.value = options.transform(res?.data ?? res)
+                    results.value = options.transform(data)
                 else
-                    results.value = res?.data ?? res
+                    results.value = data
 
                 return Promise.resolve(res)
             })
@@ -48,11 +48,13 @@ export function useApi<T, P>(
             }).then(() => {
                 endProcess()
             })
-            ;
     }
 
-    if (options.immediate)
+    if (options.immediate && options.defaultParams)
         exec(options.defaultParams)
+    else if (options.immediate && !options.defaultParams)
+        exec({} as PayloadType);
 
-    return { exec, error, loading, completed, status, results }
+
+    return { exec, error, loading, completedOnce, status, results };
 }
