@@ -1,14 +1,14 @@
 # @kugatsu/vueCompose
 
-## useApi
-
-Composition function to get result and states of a api call
-
-### Install
+## Install
 
 ```shell
 yarn add @kugatsu/vueComposes
 ```
+
+## useApi
+
+Composition function to get result and states of a api call
 
 ### How to use
 
@@ -35,12 +35,6 @@ function reloadUsers() {
 
 Composition function to filter datas[] with keywords or keyword
 
-### Install
-
-```shell
-yarn add @kugatsu/vueComposes
-```
-
 ### How to use
 
 ```vue
@@ -52,7 +46,7 @@ const datas = ref([
   { name: "Aline", age: 30, sport: ["tennis", "badminton"] },
 ]);
 
-const { datasFiltred, search } = useSearch(datas);
+const { datasFiltred, search } = useSearch(datas, "");
 </script>
 
 <template>
@@ -61,4 +55,32 @@ const { datasFiltred, search } = useSearch(datas);
     {{ datasFiltred }}
   </div>
 </template>
+```
+
+## useScreenSize
+
+Composition function to filter datas[] with keywords or keyword
+
+### How to use
+
+```vue
+<script setup lang="ts">
+import { useScreenSize } from "@kugatsu/useScreenSize";
+
+const { width, height, isMobile } = useSearch(datas, "");
+</script>
+
+<template>
+  <div>{{ width }}</div>
+  <div>{{ height }}</div>
+
+  <div v-if="isMobile">show only on mobile</div>
+</template>
+```
+
+You can change the mobile size value
+
+```ts
+import { setSizeMobile } from "@kugatsu/useScreenSize";
+setSizeMobile(1024);
 ```

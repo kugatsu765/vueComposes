@@ -8,4 +8,6 @@ export default defineBuildConfig({
         // { input: 'src/components/', outDir: 'dist/components' },
     ],
     declaration: true,
+    cjsBridge: true,
+    dependencies: ['vue', '@kugatsu/utilities']
 })

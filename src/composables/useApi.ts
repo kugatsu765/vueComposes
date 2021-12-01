@@ -36,15 +36,16 @@ export function useApi<PayloadType, ResultType>(func: (payload: PayloadType) => 
                 else
                     results.value = data
 
-                return Promise.resolve(res)
+                return Promise.resolve(data)
             })
             .catch((err) => {
                 error.value = err
                 status.value = err?.status
                 results.value = options.defaultValue
                 return Promise.reject(err)
-            }).then(() => {
+            }).then((data) => {
                 endProcess()
+                return Promise.resolve(data)
             })
     }
 

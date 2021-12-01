@@ -1,7 +1,7 @@
 {
   "name": "@kugatsu/vue-composes",
   "description": "Some composition function to help & share",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "author": "Romain GABEL",
   "license": "ISC",
   "main": "./dist/index.cjs",
@@ -29,11 +29,12 @@
     "compositionApi"
   ],
   "dependencies": {
-    "@kugatsu/utilities": "^1.0.2",
-    "unbuild": "^0.5.13",
-    "vue": "^3.2.16"
+    "vue": "^3.2.16",
+    "@kugatsu/utilities": "^1.0.2"
   },
+  "peerDependencies": {},
   "devDependencies": {
+    "unbuild": "^0.5.13",
     "@types/jest": "^27.0.3",
     "@vitejs/plugin-vue": "^1.9.3",
     "jest": "^27.4.2",

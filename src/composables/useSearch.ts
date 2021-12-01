@@ -1,13 +1,14 @@
 import { ref, Ref, ComputedRef, computed } from "vue";
 import { searchInArray, searchsInArray } from "@kugatsu/utilities"
 
-interface IUseSearch<T> {
-    search: Ref<string | undefined | string[]>;
+interface IUseSearch<T, S> {
+    search: Ref<S>;
     datasFiltred: ComputedRef<T[]>
 }
 
-export function useSearch<T>(datas: Ref<T[]>): IUseSearch<T> {
-    const search = ref<string | string[]>()
+export function useSearch<T, S>(datas: Ref<T[]>, initialValue: S): IUseSearch<T, S> {
+
+    const search = ref<S>(initialValue) as Ref<S>
 
     const datasFiltred = computed(() => {
         if (Array.isArray(search.value)) {

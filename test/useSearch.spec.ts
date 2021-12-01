@@ -12,7 +12,7 @@ describe("Search string in datas", () => {
     it("should return 1 element ", () => {
         const keywords = "tennis"
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch(datas, '')
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(1);
@@ -21,7 +21,7 @@ describe("Search string in datas", () => {
     it("should return 2 elements ", () => {
         const keywords = "badminton"
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch(datas, '')
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(2);
@@ -30,7 +30,7 @@ describe("Search string in datas", () => {
     it("should return 1 elements ", () => {
         const keywords = '30'
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch(datas, '')
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(1);
@@ -39,7 +39,7 @@ describe("Search string in datas", () => {
     it("should return 0 elements ", () => {
         const keywords = '33'
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch(datas, '')
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(0);
@@ -58,7 +58,7 @@ describe("Search multi string in datas", () => {
     it("should return 0 element ", () => {
         const keywords = ['30', 'tennis'];
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch<any, string[]>(datas, [])
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(0);
@@ -67,7 +67,7 @@ describe("Search multi string in datas", () => {
     it("should return 1 elements ", () => {
         const keywords = ['32', 'tennis'];
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch<any, string[]>(datas, [])
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(1);
@@ -76,7 +76,7 @@ describe("Search multi string in datas", () => {
     it("should return 1 elements ", () => {
         const keywords = ['tennis'];
 
-        const { datasFiltred, search } = useSearch(datas)
+        const { datasFiltred, search } = useSearch<any, string[]>(datas, [])
         search.value = keywords
 
         expect(datasFiltred.value.length).toEqual(1);
