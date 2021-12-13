@@ -1,13 +1,5 @@
 import { ref, Ref } from "vue";
-
-export interface IAPIParam<ResultType, PayloadType> {
-    defaultParams?: PayloadType;
-    defaultValue: ResultType;
-    immediate?: boolean;
-    loader?: boolean;
-    transform?: (data: any) => any;
-    [x: string]: any;
-}
+import { IAPIParam } from ".";
 
 export function useApiOptions<PayloadType, ResultType>(func: (options: any, payload: PayloadType) => Promise<any | void>, options: IAPIParam<ResultType, PayloadType>) {
 
