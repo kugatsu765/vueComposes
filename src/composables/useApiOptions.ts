@@ -4,11 +4,12 @@ export interface IAPIParam<ResultType, PayloadType> {
     defaultParams?: PayloadType;
     defaultValue: ResultType;
     immediate?: boolean;
+    loader?: boolean;
     transform?: (data: any) => any;
     [x: string]: any;
 }
 
-export function useApi<PayloadType, ResultType>(func: (payload: PayloadType) => Promise<any | void>, options: IAPIParam<ResultType, PayloadType>) {
+export function useApiOptions<PayloadType, ResultType>(func: (options: any, payload: PayloadType) => Promise<any | void>, options: IAPIParam<ResultType, PayloadType>) {
 
     const error = ref<string>('')
     const loading = ref<boolean>(false)
@@ -25,7 +26,9 @@ export function useApi<PayloadType, ResultType>(func: (payload: PayloadType) => 
         loading.value = true
         error.value = ""
 
-        return await func(payload)
+        const { defaultParams, defaultValue, immediate, transform, ...opts } = options
+
+        return await func(opts, payload)
             .then((res: any) => {
                 status.value = res?.status ?? "200"
                 const data = res?.data ?? res

@@ -14,14 +14,14 @@ Composition function to get result and states of a api call
 
 ```ts
 import { useApi } from "@kugatsu/vueComposes";
-import { apiFetchUsers } from "~/api"; // Your api to call () : Promise
+import { apiFetchUsers } from "~/api"; // Your api to call (payload) : Promise
 import { IUser } from "~/models"; // Model if you are using TS
 
 const {
   exec: execUsers,
   results: users,
   loading,
-} = useApi<IUser, { active: boolean }>(apiFetchUsers, {
+} = useApiOptions<{ active: boolean }, IUser[]>(apiFetchUsers, {
   loader: true,
   defaultValue: [],
 });
@@ -30,6 +30,31 @@ function reloadUsers() {
   execUsers({ active: true });
 }
 ```
+## useApiOptions
+
+Composition function to get result and states of a api call
+
+### How to use
+
+```ts
+import { useApiOptions } from "@kugatsu/vueComposes";
+import { apiFetchUsers } from "~/api"; // Your api to call (options, payload) : Promise
+import { IUser } from "~/models"; // Model if you are using TS
+
+const {
+  exec: execUsers,
+  results: users,
+  loading,
+} = useApiOptions<{ active: boolean }, IUser[]>(apiFetchUsers, {
+  loader: true,
+  defaultValue: [],
+});
+
+function reloadUsers() {
+  execUsers({ active: true });
+}
+```
+
 
 ## useSearch
 
